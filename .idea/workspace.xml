@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="06117e9a-a460-4f8f-bdb1-85b81676818a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/db/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/menus/AbstractMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/menus/AbstractMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/menus/AddBookMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/menus/AddBookMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/menus/DeleteBookMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/menus/DeleteBookMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/menus/EditBookMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/menus/EditBookMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/menus/AdminMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/BookRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="06117e9a-a460-4f8f-bdb1-85b81676818a" name="Changes" comment="Assignment4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,12 +67,33 @@
       <workItem from="1708097827538" duration="4402000" />
       <workItem from="1708174737512" duration="39000" />
       <workItem from="1708265704056" duration="7885000" />
-      <workItem from="1708275907780" duration="1021000" />
+      <workItem from="1708275907780" duration="1379000" />
     </task>
+    <task id="LOCAL-00001" summary="Assignment4">
+      <option name="closed" value="true" />
+      <created>1708277034116</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708277034116</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Assignment4">
+      <option name="closed" value="true" />
+      <created>1708277293406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708277293406</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Assignment4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
