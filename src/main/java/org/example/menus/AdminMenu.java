@@ -1,14 +1,13 @@
 package org.example.menus;
 
 import org.example.models.Book;
+import org.example.models.User;
 import org.example.repositories.BookRepository;
 
 import java.util.ArrayList;
 
 public class MainMenu extends AbstractMenu implements Menu{
-    public MainMenu(BookRepository bookRepository) {
-        super(bookRepository);
-    }
+    public static User user = null;
 
     @Override
     public void run() {
@@ -19,19 +18,19 @@ public class MainMenu extends AbstractMenu implements Menu{
             input = scanner.nextInt();
             switch(input){
                 case 1:
-                    ArrayList<Book> books = bookRepository.getAll();
+                    ArrayList<Book> books = BookRepository.instance.getAll();
                     for(Book book: books){
                         System.out.println(book);
                     }
                     break;
                 case 2:
-                    new AddBookMenu(bookRepository).run();
+                    new AddBookMenu().run();
                     break;
                 case 3:
-                    new EditBookMenu(bookRepository).run();
+                    new EditBookMenu().run();
                     break;
                 case 4:
-                    new DeleteBookMenu(bookRepository).run();
+                    new DeleteBookMenu().run();
                     break;
                 case 0:
                     System.out.println("Closing program");
