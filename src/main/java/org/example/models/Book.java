@@ -11,9 +11,10 @@ public class Book {
     private int id;
     private String name;
     private String author;
-    private String genre;
+    private int genreId;
     private double price;
     private int quantity;
+
 
     @Override
     public String toString() {
@@ -21,7 +22,7 @@ public class Book {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
+                ", genre='" + genreId + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';

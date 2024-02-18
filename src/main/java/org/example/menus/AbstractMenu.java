@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public abstract class AbstractMenu {
     protected Scanner scanner;
-    protected BookRepository bookRepository;
-    public AbstractMenu(BookRepository bookRepository){
+
+    public AbstractMenu(){
         scanner = new Scanner(System.in);
-        this.bookRepository = bookRepository;
+    }
+    protected void printLine(){
+        System.out.println("____________________________________________________________________");
     }
 }

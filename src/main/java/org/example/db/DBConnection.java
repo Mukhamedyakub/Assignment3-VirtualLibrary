@@ -1,31 +1,32 @@
 package org.example.db;
 
 import lombok.*;
+import org.example.config.Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-@AllArgsConstructor
-@Getter
-@Setter
-public class DBConnection {
-    private String host;
-    private String port;
-    private String user;
-    private String password;
-    private String dbName;
 
-    public Connection getConnection() {
-        Connection connection = null;
-        String connectionString = "jdbc:postgresql://" + host + ":" + port + "/" + dbName;
+public class DBConnection {
+    public static final Connection connection = getConnection();
+
+    public static Connection getConnection() {
+        if(connection != null){
+            return connection;
+        }
+        Connection con = null;
+        String connectionString = "jdbc:postgresql://" + Config.properties.getProperty("db.host") +
+                ":" + Config.properties.getProperty("db.port") + "/" + Config.properties.getProperty("db.name");
 
         try {
-            connection = DriverManager.getConnection(connectionString, user, password);
+            con = DriverManager.getConnection(connectionString, Config.properties.getProperty("db.user"),
+                    Config.properties.getProperty("db.password"));
         } catch (SQLException e) {
             System.out.println("Database connection failed");
             e.printStackTrace();
         }
-        return connection;
+        return con;
     }
 }
+

@@ -8,11 +8,22 @@ import org.example.models.Book;
 import java.sql.*;
 import java.util.ArrayList;
 
+import static org.example.db.DBConnection.connection;
+
 @AllArgsConstructor
 @Getter
 @Setter
-public class BookRepository {
-    private Connection connection;
+public class BookRepository implements Repository<Book>{
+
+    public static final BookRepository instance = getInstance();
+
+    public static BookRepository getInstance(){
+        if(instance==null){
+            return new BookRepository();
+        }
+        return instance;
+    }
+    @Override
     public Book getById(int id){
         String sql = "SELECT * FROM books WHERE id = ?";
         try {
@@ -23,10 +34,10 @@ public class BookRepository {
                 int bookId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String author = resultSet.getString("author");
-                String genre = resultSet.getString("genre");
+                int genreId = resultSet.getInt("genre_id");
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");
-                return new Book(bookId, name, author, genre, price, quantity);
+                return new Book(bookId, name, author, genreId, price, quantity);
             }
         } catch (SQLException e) {
             System.out.println("Failed to find book");
@@ -34,6 +45,8 @@ public class BookRepository {
         }
         return null;
     }
+
+    @Override
     public ArrayList<Book> getAll(){
         ArrayList<Book>books = new ArrayList<>();
         String sql = "SELECT * FROM books";
@@ -44,10 +57,10 @@ public class BookRepository {
                 int bookId = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String author = resultSet.getString("author");
-                String genre = resultSet.getString("genre");
+                int genreId = resultSet.getInt("genre_id");
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");
-                books.add(new Book(bookId, name, author, genre, price, quantity));
+                books.add(new Book(bookId, name, author, genreId, price, quantity));
             }
         } catch (SQLException e) {
             System.out.println("Failed to find books");
@@ -55,29 +68,40 @@ public class BookRepository {
         }
         return books;
     }
-    public void save(Book book){
-        String sql = "INSERT INTO books(name, author, genre, price, quantity) values(?,?,?,?,?)";
+
+    @Override
+    public Integer save(Book book){
+        String sql = "INSERT INTO books(name, author, genre_id, price, quantity) values(?,?,?,?,?)";
         try{
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, book.getName());
             stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getGenre());
+            stmt.setInt(3, book.getGenreId());
             stmt.setDouble(4, book.getPrice());
             stmt.setInt(5, book.getQuantity());
-            stmt.executeUpdate();
+            int numberOfInsertedRows = stmt.executeUpdate();
+            if(numberOfInsertedRows>0){
+                ResultSet rs = stmt.getGeneratedKeys();
+                if(rs.next()){
+                    return rs.getInt(1);
+                }
+            }
         } catch (SQLException e) {
             System.out.println("Failed to upload book");
             e.printStackTrace();
 
         }
+        return null;
     }
+
+    @Override
     public void update(Book book){
-        String sql = "UPDATE books SET name = ?, author = ?, genre = ?, price = ?, quantity = ? WHERE id = ?";
+        String sql = "UPDATE books SET name = ?, author = ?, genre_id = ?, price = ?, quantity = ? WHERE id = ?";
         try{
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, book.getName());
             stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getGenre());
+            stmt.setInt(3, book.getGenreId());
             stmt.setDouble(4, book.getPrice());
             stmt.setInt(5, book.getQuantity());
             stmt.setInt(6, book.getId());
@@ -90,6 +114,7 @@ public class BookRepository {
 
     }
 
+    @Override
     public void delete(int id){
         String sql = "DELETE from books WHERE id = ?";
         try{

@@ -4,18 +4,16 @@ import org.example.models.Book;
 import org.example.repositories.BookRepository;
 
 public class DeleteBookMenu extends AbstractMenu implements Menu{
-    public DeleteBookMenu(BookRepository bookRepository) {
-        super(bookRepository);
-    }
+
 
     @Override
     public void run() {
         int bookid;
         System.out.println("Enter book id to delete: ");
         bookid = scanner.nextInt();
-        Book book = bookRepository.getById(bookid);
+        Book book = BookRepository.instance.getById(bookid);
         if(book != null){
-            bookRepository.delete(bookid);
+            BookRepository.instance.delete(bookid);
             System.out.println("Book with id " + bookid + " Deleted");
         }
         else{
